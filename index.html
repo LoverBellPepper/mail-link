@@ -4,24 +4,38 @@
   <meta charset="UTF-8">
   <title>Написать письмо</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body style="font-family: sans-serif; text-align: center; padding: 40px;">
+<body>
   <h2>Открываем почту…</h2>
   <p>Если письмо не открылось автоматически, нажмите кнопку ниже:</p>
   
-  <button onclick="window.location.href='https://e.mail.ru/compose/?to=352_952@mail.ru'" 
-          style="padding:10px 20px; font-size:16px;">
-    Открыть Mail.ru в браузере
-  </button>
+  <button onclick="openInBrowser()">Открыть Mail.ru в браузере</button>
 
   <script>
     // Пытаемся открыть почтовое приложение
     window.location.href = "mailto:352_952@mail.ru";
 
-    // Если через 900 мс ничего не открылось — редирект на веб-почту
+    // Через ~900 мс редирект на веб-почту (если приложения нет)
     setTimeout(() => {
       window.location.href = "https://e.mail.ru/compose/?to=352_952@mail.ru";
     }, 900);
+
+    function openInBrowser() {
+      window.location.href = "https://e.mail.ru/compose/?to=352_952@mail.ru";
+    }
   </script>
 </body>
 </html>
